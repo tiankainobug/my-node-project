@@ -4,9 +4,17 @@ const Login = ()=>{
     const [form] = Form.useForm()
 
     const login = (value)=>{
-        console.log(value);
-        const res = form.getFieldsValue()
-        console.log(res)
+        fetch('http://127.0.0.1:80/login',{
+            method:'POST',
+            body: JSON.stringify(value),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then((res)=>{
+            return res.json()
+        }).then((text)=>{
+            console.log(text)
+        })
     }
     const submit = ()=>{
        form.setFieldsValue({
