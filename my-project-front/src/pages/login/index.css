@@ -1,0 +1,23 @@
+.login {
+    position: fixed;
+    width: 500px;
+    height: 250px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid darkgray;
+    border-radius: 8px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.ant-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+

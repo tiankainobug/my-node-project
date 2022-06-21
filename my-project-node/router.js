@@ -5,7 +5,8 @@ router.post('/login',(req,res)=>{
     return res.send({
         status:0,
         msg:'GET请求成功！',
-        data:req.query
+        data:req.query,
+        success:true
     })
 })
 module.exports = router
