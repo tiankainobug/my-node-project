@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import Header from '../headaer';
+import Body from  '../body';
 
-class Index extends Component {
-    render() {
-        return (
-            <div>
-                2222
-            </div>
-        );
-    }
+const Home = ()=> {
+    return (
+        <div>
+            <Header />
+            <Body />
+        </div>
+    );
 }
 
-export default Index;
+export default Home;

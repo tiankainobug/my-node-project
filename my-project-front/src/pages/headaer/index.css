@@ -1,0 +1,33 @@
+* {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #ffffff;
+
+}
+li {
+    display: inline-block;
+}
+.toHome {
+    font-size: 24px;
+    font-weight: 550;
+    padding-left: 300px;
+}
+.toMy {
+    position: absolute;
+    right: 300px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    line-height: 60px;
+    background: url('../../../public/img/img.png') no-repeat;
+    background-size: 30px 30px;
+}
+.toMy:hover {
+    cursor:pointer;
+}

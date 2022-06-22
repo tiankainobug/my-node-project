@@ -1,8 +1,8 @@
-import {Button, Row, Col, Form, Input} from "antd";
+import {Button, Row, Col, Form, Input,message} from "antd";
 import './index.css';
 import {useNavigate} from 'react-router-dom'
 
-const Login = ()=>{
+const Login = ()=> {
     const [form] = Form.useForm()
     const navigate = useNavigate();
     const submit = (value)=>{
@@ -16,7 +16,10 @@ const Login = ()=>{
             return res.json()
         }).then((res)=>{
             if (res.success){
+                message.success('登录成功！')
                return navigate('/home')
+            }else{
+                message.error('用户名或密码输入错误！')
             }
         })
     }
