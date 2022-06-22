@@ -5,6 +5,7 @@ const cors = require('cors')
 const router = require('./router')
 // 创建app服务器
 const app = express()
+app.use(express.json())
 // 使用路由模块
 app.use(cors())
 app.use(router)
