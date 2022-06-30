@@ -6,7 +6,7 @@ const Login = ()=> {
     const [form] = Form.useForm()
     const navigate = useNavigate();
     const submit = (value)=>{
-        fetch('http://127.0.0.1:80/login',{
+        fetch('http://tiankaii.cn:8002/login',{
             method:'POST',
             body: JSON.stringify(value),
             headers: new Headers({
@@ -42,7 +42,7 @@ const Login = ()=> {
                             rules={[{required: true, message: '请输入用户名！'}]}
                             className='loginItem'
                         >
-                            <Input placeholder='请输入用户名' maxLength={20}/>
+                            <Input placeholder='请输入用户名,tiank' maxLength={20}/>
                         </Form.Item>
                     </Col>
                 </Row>
@@ -52,7 +52,7 @@ const Login = ()=> {
                             name="password"
                             rules={[{required: true, message: '请输入密码！'}]}
                         >
-                            <Input placeholder='i请输入密码' maxLength={20}/>
+                            <Input placeholder='请输入密码,Qq133242' maxLength={20}/>
                         </Form.Item>
                     </Col>
                 </Row>

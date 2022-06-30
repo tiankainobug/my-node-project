@@ -57,11 +57,13 @@ a {
 }
 .popItem {
     display: block;
-    padding: 0 13px;
+    padding: 5px 13px;
     color: rgb(133, 144, 166);
     font-size: 14px;
+    height: 37px;
+    line-height: 37px;
 }
 .popItem img {
-    width: 22px;
+    width: 17px;
     margin-right: 5px;
 }
