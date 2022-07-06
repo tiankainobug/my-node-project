@@ -12,8 +12,8 @@ const Index =()=> {
     const renderPopOfMy = ()=> {
         return (
             <ul className='popOfMy'>
-                <li className='popItem'><a href="http://www.tiankaii.cn:8090"><img src={gerenzhongxin} alt=""/>我的主页</a></li>
-                <li className='popItem'><a href="http://www.tiankaii.cn:5244"><img src={gerenzhongxin} alt=""/>我的网盘</a></li>
+                <li className='popItem'><a href="https://tiankaii.cn/zhuye"><img src={gerenzhongxin} alt=""/>我的主页</a></li>
+                <li className='popItem'><a href="https://tiankaii.cn/wangpan"><img src={gerenzhongxin} alt=""/>我的网盘</a></li>
                 <li className='popItem'><a href="/"><img src={tuichu} alt=""/>退出登录</a></li>
             </ul>
         )
