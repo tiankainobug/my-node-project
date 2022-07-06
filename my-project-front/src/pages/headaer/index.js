@@ -27,7 +27,6 @@ const Index =()=> {
             </ul>
             {showPopOfMy ? renderPopOfMy() :null}
         </div>
-
     );
 }
 

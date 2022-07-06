@@ -6,7 +6,7 @@ const Login = ()=> {
     const [form] = Form.useForm()
     const navigate = useNavigate();
     const submit = (value)=>{
-        fetch('http://tiankaii.cn:8002/login',{
+        fetch('https://tiankaii.cn/apis/login',{
             method:'POST',
             body: JSON.stringify(value),
             headers: new Headers({
