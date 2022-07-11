@@ -17,6 +17,7 @@ const Login = ()=> {
         }).then((res)=>{
             if (res.success){
                 message.success('登录成功！')
+                localStorage.setItem('token',res.token)
                return navigate('/home')
             }else{
                 message.error('用户名或密码输入错误！')
