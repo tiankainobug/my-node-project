@@ -18,7 +18,7 @@ router.post('/login',(req,res)=>{
                 msg:'登录成功！',
                 success:true,
                 userId:resSql[0]?.id,
-                token:jwt.sign({username:req.body.username,userId:resSql[0]?.id},secretKey,{expiresIn:'30s'})
+                token:jwt.sign({username:req.body.username,userId:resSql[0]?.id},secretKey,{expiresIn:'1209600s'})
             })
         }
     })
