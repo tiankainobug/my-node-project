@@ -22,7 +22,12 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-  return fetch(url, options)
+  const oldHeaders = options ? {...options.headers} : null
+  const newOptions = {
+    ...oldHeaders,
+    Authorization:'Bearer '+localStorage.getItem('token')
+  }
+  return fetch(url, newOptions)
     .then(checkStatus)
     .then(parseJSON)
     // .then(data => ({ data }))

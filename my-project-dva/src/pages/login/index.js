@@ -13,13 +13,14 @@ const Login = props => {
       request('https://tiankaii.cn/apis/login',{
         method:'POST',
         body: JSON.stringify(value),
-        headers: new Headers({
+        headers: {
             'Content-Type': 'application/json'
-        })
+        }
       }).then((res)=>{
         if (res.success){
           message.success('登录成功！')
           const token = res.token
+          localStorage.setItem('token',token)
           dispatch({
             type:'login/saveToken',
             payload:token

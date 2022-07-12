@@ -23,5 +23,15 @@ router.post('/login',(req,res)=>{
         }
     })
 })
+router.get('/getData',(req,res)=>{
+    res.send({
+        success:true,
+        data:{
+            name:'yaoming',
+            age:18
+        },
+        user:req.user
+    })
+})
 module.exports = router
 
