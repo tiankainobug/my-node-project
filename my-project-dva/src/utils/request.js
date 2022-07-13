@@ -24,8 +24,8 @@ function checkStatus(response) {
 export default function request(url, options) {
   const oldHeaders = options ? {...options.headers} : null
   const newOptions = {
-    ...oldHeaders,
-    Authorization:'Bearer '+localStorage.getItem('token')
+    headers:{...oldHeaders,Authorization:localStorage.getItem('token')},
+    ...options
   }
   return fetch(url, newOptions)
     .then(checkStatus)

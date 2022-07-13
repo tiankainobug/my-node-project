@@ -1,10 +1,18 @@
 import style from './index.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import tuichu from './img/a-26wode3.svg';
 import gerenzhongxin from './img/a-30shouye2.svg';
+import request from "../../utils/request";
 
 const Index =()=> {
     const [showPopOfMy,setShowPopOfMy] = useState(false);
+
+    useEffect(()=>{
+      request('https://tiankaii.cn/apis/user/getUserName').then((res)=>{
+        console.log('getUserName',res)
+      })
+    },[])
+
     // 我的头像的点击事件
     const toMy = ()=> {
         setShowPopOfMy(!showPopOfMy)

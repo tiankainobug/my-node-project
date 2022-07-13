@@ -18,7 +18,7 @@ router.post('/login',(req,res)=>{
                 msg:'登录成功！',
                 success:true,
                 userId:resSql[0]?.id,
-                token:jwt.sign({username:req.body.username,userId:resSql[0]?.id},secretKey,{expiresIn:'1209600s'})
+                token:"Bearer " + jwt.sign({username:req.body.username,userId:resSql[0]?.id}, secretKey, {expiresIn: 60 * 60})
             })
         }
     })
@@ -26,11 +26,24 @@ router.post('/login',(req,res)=>{
 router.get('/getData',(req,res)=>{
     res.send({
         success:true,
-        data:{
-            name:'yaoming',
-            age:18
-        },
-        user:req.user
+        username:'tiank'
+    })
+})
+router.get('/user/getUserName',(req,res)=>{
+    const getUsername = 'SELECT username FROM users WHERE id = ?'
+    db.query(getUsername,[1],(err,resSql)=>{
+        if (err) console.log(err.message)
+        if (resSql.length === 0){
+            res.send({
+                msg:'未找到用户！',
+                success:false
+            })
+        }else {
+            res.send({
+                success:true,
+                username:resSql[0]?.username,
+            })
+        }
     })
 })
 module.exports = router

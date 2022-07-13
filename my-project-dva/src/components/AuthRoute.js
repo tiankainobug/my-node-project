@@ -5,7 +5,6 @@ import Home from "../pages/home";
 import {message} from "antd";
 
 const AuthRoute = ({login}) => {
-  console.log('login',login)
   const {
     token
   } = login
@@ -13,7 +12,7 @@ const AuthRoute = ({login}) => {
     if (!token){
       message.warning('请先登录！')
     }
-  },token)
+  },[token])
   return (
     !token ?
     <Redirect from='/home' to='/login' exact />:
