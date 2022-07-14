@@ -24,38 +24,29 @@ app.use(cors())
 app.use((req,res,next)=>{
     if (req.url !== '/login') {
         console.log('auth',req.headers.authorization)
-        console.log('auth2',req.headers.authorization.split(" "))
-        const token = req.headers.authorization.split(" ")[1];
-        console.log('token',token)
-        jwt.verify(token, 'tiankSecret', (err, decoded) => {
-            if (err) {
-                console.log("verify error", err);
-                res.json({code: "404", msg: "token无效"});
-            } else {
-                console.log("verify decoded", decoded);
-                next();
-            }
-        });
+        const tokenLong = req.headers.authorization
+        if (tokenLong){
+            const token = req.headers.authorization.split(" ")[1];
+            jwt.verify(token, 'tiankSecret', (err, decoded) => {
+                if (err) {
+                    console.log("verify error", err);
+                    res.json({code: "401", msg: "token无效"});
+                } else {
+                    console.log("verify decoded", decoded);
+                    next();
+                }
+            });
+        }else {
+            console.log('权限认证失败！')
+            res.json({code: "401", msg: "token无效"});
+        }
+    }else {
+        next()
     }
-    next()
 })
 app.use(router)
-// expressJWT({secret:secretKey}) 来指定密钥
-// unless({path:[/^\/api\//]}) 指定哪些接口不需要解密
-// app.use(jwt({secret:'tiankSecret',algorithms: ["HS256"],credentialsRequired: false}).unless({path:['/login']}))
-// app.use((err,req,res,next)=>{
-//     if (err.name === 'UnauthorizedError') {
-//         return res.send({
-//             status: 401,
-//             message: '无效的token',
-//         })
-//     } else {
-//         next(err)
-//     }
-// })
-// 创建https服务器实例
 const httpsServer = https.createServer(credentials, app)
 // 开启服务器，监听80端口
 httpsServer.listen(8002,()=>{
-    console.log('server is running at http://127.0.0.1:8002')
+    console.log('server is running at https://127.0.0.1:8002')
 })

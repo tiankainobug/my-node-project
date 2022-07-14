@@ -30,6 +30,5 @@ export default function request(url, options) {
   return fetch(url, newOptions)
     .then(checkStatus)
     .then(parseJSON)
-    // .then(data => ({ data }))
     .catch(err => ({ err }));
 }

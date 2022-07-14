@@ -2,11 +2,11 @@ import React from 'react';
 import Header from '../headaer';
 import Body from  '../body';
 
-const Home = ()=> {
+const Home = (props)=> {
     return (
         <div>
-            <Header />
-            <Body />
+            <Header {...props}/>
+            <Body {...props}/>
         </div>
     );
 }

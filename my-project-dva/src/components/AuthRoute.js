@@ -1,22 +1,23 @@
 import {connect} from "dva";
 import React, {useEffect} from 'react';
-import {Route,Redirect} from "dva/router";
+import {Route} from "dva/router";
 import Home from "../pages/home";
 import {message} from "antd";
 
-const AuthRoute = ({login}) => {
+const AuthRoute = (props) => {
+  const {history,login} = props
   const {
     token
   } = login
   useEffect(()=>{
     if (!token){
       message.warning('请先登录！')
+      history.push('/login')
     }
-  },[token])
+  },[])
   return (
-    !token ?
-    <Redirect from='/home' to='/login' exact />:
-    <Route path='/home' component={Home} />
+    token? <Route path='/home' component={Home} />: null
+
   )
 }
 export default connect(({login})=>({login}))(AuthRoute)

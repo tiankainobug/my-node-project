@@ -3,13 +3,21 @@ import {useEffect, useState} from "react";
 import tuichu from './img/a-26wode3.svg';
 import gerenzhongxin from './img/a-30shouye2.svg';
 import request from "../../utils/request";
+import {connect} from "dva";
+import {message} from "antd";
 
-const Index =()=> {
+const Index = props => {
     const [showPopOfMy,setShowPopOfMy] = useState(false);
-
+    const [username,setUsername] = useState('')
+    const { history } = props
     useEffect(()=>{
       request('https://tiankaii.cn/apis/user/getUserName').then((res)=>{
-        console.log('getUserName',res)
+        if (res && res.code && res.code === '401'){
+          message.warning('登录失效，请重新登录！')
+          history.push('/login')
+        }else {
+          setUsername(res.username)
+        }
       })
     },[])
 
@@ -31,11 +39,11 @@ const Index =()=> {
         <div className={style.header}>
             <ul>
                 <li className={style.toHome}>首页</li>
-                <li className={style.toMy} onClick={toMy} title='我的主页'></li>
+                <li className={style.toMy} onClick={toMy} title={username}></li>
             </ul>
             {showPopOfMy ? renderPopOfMy() :null}
         </div>
     );
 }
 
-export default Index;
+export default connect()(Index);

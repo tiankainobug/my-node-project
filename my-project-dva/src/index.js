@@ -1,8 +1,9 @@
 import dva from 'dva';
 import './index.css';
+import {createBrowserHistory} from "history";
 
 // 1. Initialize
-const app = dva()
+const app = dva({history:createBrowserHistory()})
 
 // 2. Plugins
 // app.use({});
