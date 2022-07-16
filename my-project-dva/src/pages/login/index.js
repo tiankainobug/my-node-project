@@ -25,7 +25,7 @@ const Login = props => {
             type:'login/saveToken',
             payload:token
           })
-          history.push('/home')
+          history.push('/WebRTC')
         }else{
           message.error('用户名或密码输入错误！')
         }
@@ -42,14 +42,14 @@ const Login = props => {
                 autoComplete="off"
                 className={style.login}
             >
-                <h2>个人博客系统登录</h2>
+                <h2>Demo</h2>
                 <Row>
                     <Col span={12}>
                         <Form.Item
                             name="username"
                             rules={[{required: true, message: '请输入用户名！'}]}
                         >
-                            <Input placeholder='请输入用户名,tiank' maxLength={20}/>
+                            <Input placeholder='请输入用户名,user' maxLength={20}/>
                         </Form.Item>
                     </Col>
                 </Row>
@@ -59,7 +59,7 @@ const Login = props => {
                             name="password"
                             rules={[{required: true, message: '请输入密码！'}]}
                         >
-                            <Input placeholder='请输入密码,Qq133242' maxLength={20}/>
+                            <Input placeholder='请输入密码,123' maxLength={20}/>
                         </Form.Item>
                     </Col>
                 </Row>

@@ -9,7 +9,7 @@ const Body = ()=> {
     }
     return (
         <div>
-          <Button type="primary" onClick={getData}>Primary Button</Button>
+          <Button type="primary" onClick={getData}>cors测试</Button>
         </div>
     )
 }

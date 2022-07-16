@@ -1,7 +1,6 @@
 import {connect} from "dva";
 import React, {useEffect} from 'react';
 import {Route} from "dva/router";
-import Home from "../pages/home";
 import {message} from "antd";
 
 const AuthRoute = (props) => {
@@ -16,7 +15,7 @@ const AuthRoute = (props) => {
     }
   },[])
   return (
-    token? <Route path='/home' component={Home} />: null
+    token? <Route path={props.path} component={props.component} />: null
 
   )
 }

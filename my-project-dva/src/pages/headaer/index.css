@@ -13,10 +13,15 @@
 li {
     display: inline-block;
 }
-.toHome {
-    font-size: 24px;
-    font-weight: 550;
-    padding-left: 300px;
+.title {
+  padding-left: 300px;
+  font-weight: 550;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.titleItem {
+  margin-right: 150px;
 }
 .toMy {
     position: absolute;

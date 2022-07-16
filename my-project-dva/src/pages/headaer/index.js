@@ -19,10 +19,14 @@ const Index = props => {
           setUsername(res.username)
         }
       })
+      document.addEventListener("click", (e) => setShowPopOfMy(false));
     },[])
-
+  const stopPropagation = (e) => {
+    e.nativeEvent.stopImmediatePropagation();
+  }
     // 我的头像的点击事件
-    const toMy = ()=> {
+    const toMy = (e)=> {
+        stopPropagation(e);
         setShowPopOfMy(!showPopOfMy)
     }
     const renderPopOfMy = ()=> {
@@ -34,11 +38,18 @@ const Index = props => {
             </ul>
         )
     }
+    const toWebRTC = ()=> {
+      history.push('/WebRTC')
+    }
+  const toHome = ()=> {
+    history.push('/home')
+  }
 
     return (
         <div className={style.header}>
-            <ul>
-                <li className={style.toHome}>首页</li>
+            <ul className={style.title}>
+                <li className={style.titleItem} onClick={toHome}>首页</li>
+                <li className={style.titleItem} onClick={toWebRTC}>WebRTC人脸跟踪</li>
                 <li className={style.toMy} onClick={toMy} title={username}></li>
             </ul>
             {showPopOfMy ? renderPopOfMy() :null}
