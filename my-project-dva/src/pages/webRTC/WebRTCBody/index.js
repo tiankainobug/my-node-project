@@ -43,18 +43,22 @@ const WebRTCBody = ()=> {
       clearTimeout(timeout);
     }
     const loadedmetadata = async ()=> {
-      const result = await faceapi.detectSingleFace(videoRef.current, options).withFaceLandmarks().withFaceExpressions();
-      if (result && !videoRef.current.paused) {
-        const dims = faceapi.matchDimensions(canvasRef.current, videoRef.current, true);
-        const resizeResults = faceapi.resizeResults(result, dims);
-        faceapi.draw.drawDetections(canvasRef.current, resizeResults);
-        faceapi.draw.drawFaceExpressions(canvasRef.current, resizeResults, 0.05);
+      if (!options){
+        timeout = setTimeout(() => loadedmetadata());
       } else {
-        canvasRef.current
-          .getContext("2d")
-          .clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        const result = await faceapi.detectSingleFace(videoRef.current, options).withFaceLandmarks().withFaceExpressions();
+        if (result && !videoRef.current.paused) {
+          const dims = faceapi.matchDimensions(canvasRef.current, videoRef.current, true);
+          const resizeResults = faceapi.resizeResults(result, dims);
+          faceapi.draw.drawDetections(canvasRef.current, resizeResults);
+          faceapi.draw.drawFaceExpressions(canvasRef.current, resizeResults, 0.05);
+        } else {
+          canvasRef.current
+            .getContext("2d")
+            .clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        }
+        timeout = setTimeout(() => loadedmetadata());
       }
-      timeout = setTimeout(() => loadedmetadata());
     }
 
     return (
