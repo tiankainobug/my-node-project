@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../headaer';
-import WebRTCBody from  '../webRTC/WebRTCBody';
+import WebRTCBody from  './WebRTCBody';
 
 const WebRTC = (props)=> {
   return (

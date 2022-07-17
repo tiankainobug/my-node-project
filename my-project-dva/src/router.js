@@ -4,6 +4,7 @@ import Login from './pages/login';
 import Home from "./pages/home";
 import AuthRoute from "./components/AuthRoute";
 import WebRTC from "./pages/webRTC";
+import faceRecognition from "./pages/faceRecognition";
 
 function RouterConfig(props) {
   const {history} = props
@@ -15,6 +16,7 @@ function RouterConfig(props) {
         <Route path="/login" exact component={Login} />
         <AuthRoute path="/home" exact component={Home} {...props} />
         <AuthRoute path="/WebRTC" exact component={WebRTC} {...props} />
+        <AuthRoute path="/faceRecognition" exact component={faceRecognition} {...props} />
       </Switch>
     </Router>
   );

@@ -44,12 +44,16 @@ const Index = props => {
   const toHome = ()=> {
     history.push('/home')
   }
+  const toFaceRecognition = ()=> {
+    history.push('/faceRecognition')
+  }
 
     return (
         <div className={style.header}>
             <ul className={style.title}>
                 <li className={style.titleItem} onClick={toHome}>首页</li>
                 <li className={style.titleItem} onClick={toWebRTC}>WebRTC人脸跟踪</li>
+                <li className={style.titleItem} onClick={toFaceRecognition}>人脸识别</li>
                 <li className={style.toMy} onClick={toMy} title={username}></li>
             </ul>
             {showPopOfMy ? renderPopOfMy() :null}
