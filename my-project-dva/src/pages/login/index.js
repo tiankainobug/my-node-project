@@ -74,6 +74,9 @@ const Login = props => {
                     </Col>
                 </Row>
             </Form>
+          <div className={style.bottom}>
+            <a href="https://beian.miit.gov.cn/">鲁ICP备2022005239号-1</a>
+          </div>
         </div>
     )
 }
